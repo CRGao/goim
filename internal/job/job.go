@@ -28,7 +28,7 @@ type Job struct {
 // New new a push job.
 func New(c *conf.Config) *Job {
 	j := &Job{
-		c:        c,
+		// c:        c,
 		consumer: newKafkaSub(c.Kafka),
 		rooms:    make(map[string]*Room),
 	}

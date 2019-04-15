@@ -59,6 +59,8 @@ type Config struct {
 	Discovery *naming.Config
 	Comet     *Comet
 	Room      *Room
+
+	Broker *Broker
 }
 
 // Room is room config.
@@ -76,6 +78,13 @@ type Comet struct {
 
 // Kafka is kafka config.
 type Kafka struct {
+	Topic   string
+	Group   string
+	Brokers []string
+}
+
+// Broker is Broker config.
+type Broker struct {
 	Topic   string
 	Group   string
 	Brokers []string

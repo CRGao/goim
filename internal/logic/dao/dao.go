@@ -4,6 +4,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/Terry-Mao/goim/internal/broker"
 	"github.com/Terry-Mao/goim/internal/logic/conf"
 	"github.com/gomodule/redigo/redis"
 	kafka "gopkg.in/Shopify/sarama.v1"
@@ -11,8 +12,9 @@ import (
 
 // Dao dao.
 type Dao struct {
-	c           *conf.Config
-	kafkaPub    kafka.SyncProducer
+	c *conf.Config
+	// kafkaPub    kafka.SyncProducer
+	Broker      broker.Broker
 	redis       *redis.Pool
 	redisExpire int32
 }
@@ -20,8 +22,8 @@ type Dao struct {
 // New new a dao and return.
 func New(c *conf.Config) *Dao {
 	d := &Dao{
-		c:           c,
-		kafkaPub:    newKafkaPub(c.Kafka),
+		c:      c,
+		Broker: kafkaPub, newKafkaPub(c.Kafka),
 		redis:       newRedis(c.Redis),
 		redisExpire: int32(time.Duration(c.Redis.Expire) / time.Second),
 	}

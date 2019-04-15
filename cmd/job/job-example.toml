@@ -6,3 +6,8 @@
     topic = "goim-push-topic"
     group = "goim-push-group-job"
     brokers = ["127.0.0.1:9092"]
+
+[broker]
+    topic = "goim-push-topic"
+    group = "goim-push-group-job"
+    brokers = ["127.0.0.1:9092"]
